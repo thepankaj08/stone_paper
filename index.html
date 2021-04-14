@@ -1,0 +1,103 @@
+<head>
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", ()=>{
+			
+			
+		})
+		
+		function random_num(min, max) {
+			var result;
+			var inp_name = document.getElementById("inp_name").value
+			var rand = Math.floor(Math.random() * (max - min) ) + min;
+			//document.getElementById("demo").innerHTML = `Random number generated = ${rand}`;
+			if (rand == 1){
+			var comp = "Stone";
+			} else if (rand == 2){
+			var comp = "Paper";
+			} else{
+			var comp = "Scissors";
+			}
+			document.getElementById("demo1").innerHTML = `Computer Output <br> ${comp}`;
+			document.getElementById("user_inp").innerHTML = `Player Input <br> ${inp_name}`;
+			if (inp_name == comp){
+				result = "Its a tie!!!"
+				
+			}
+			if (inp_name == "Stone"){
+				if (comp == "Paper"){
+					result = "You Lose!!"
+					
+				} else if (comp == "Scissors"){
+					result = "You Win!!"
+					
+				}
+
+			}
+			if (inp_name == "Paper"){
+				if (comp == "Stone"){
+					result = "You Win!!"
+					
+				} else if (comp == "Scissors"){
+					result = "You Lose!!"
+					
+				}
+
+			}
+			if (inp_name == "Scissors"){
+				if (comp == "Stone"){
+					result = "You Lose!!"
+					
+				} else if (comp == "Paper"){
+					result = "You Win!!"
+					
+				}
+
+			}
+			document.getElementById("result").innerHTML = result;			
+		};
+	
+	</script>
+	<style type="text/css">
+			*{
+		text-align: center;
+		font-family: monospace;
+	}
+	body{
+		background: #ff892f;
+		color: white;
+	}
+	
+	#main div {
+		column-count: 2;
+  column-gap: 40px;
+	}
+
+	
+	</style>
+</head>
+<body>
+	<h1>Stone, Paper, Scissor</h1>
+	<div style="font-size: 20px;">
+	<label for="options">Choose an option:</label>
+  <select onchange="random_num(1, 4)" id="inp_name" name="inp_name" style="font-size: inherit;">
+    <option value="" disabled selected>Choose</option>
+	<option value="Stone">Stone</option>
+    <option value="Paper">Paper</option>
+    <option value="Scissors">Scissors</option>
+  </select>
+	<button onclick="random_num(1, 4)" style="font-size: inherit;" >CLICK</button>
+</div>
+	<table style="width:100%; margin-top: 20px; ">
+		<tr>
+			<th><div style="background-color: violet;"><h1 class="user" id="user_inp">...</h1></div></th>
+			<th><div style="background-color: tomato;"><h1 class="computer" id="demo1">...</h1></div></th>
+			
+		</tr>
+	</table>
+	
+	 <h2 id="demo"></h2>
+	
+	 
+	<h2 id="result" style="font-size: 40px;">...</h2>
+
+</body>
