@@ -5,55 +5,62 @@
 			
 		})
 		
-		function random_num(min, max) {
+		function random_num(min, max, what) {
 			var result;
-			var inp_name = document.getElementById("inp_name").value
+			//var inp_name = document.getElementById("inp_name").value
 			var rand = Math.floor(Math.random() * (max - min) ) + min;
 			//document.getElementById("demo").innerHTML = `Random number generated = ${rand}`;
 			if (rand == 1){
-			var comp = "Stone";
+			var comp = "stone";
 			} else if (rand == 2){
-			var comp = "Paper";
+			var comp = "paper";
 			} else{
-			var comp = "Scissors";
+			var comp = "scissors";
 			}
-			document.getElementById("demo1").innerHTML = `Computer Output <br> ${comp}`;
-			document.getElementById("user_inp").innerHTML = `Player Input <br> ${inp_name}`;
-			if (inp_name == comp){
+			document.getElementById("demo1").innerHTML = `<img src="${comp}.png" alt="${comp}" style="width: 100px;">`;
+			//document.getElementById("user_inp").innerHTML = `<br> ${what}`;
+			if (what == comp){
 				result = "Its a tie!!!"
 				
 			}
-			if (inp_name == "Stone"){
-				if (comp == "Paper"){
+			if (what == "stone"){
+				document.getElementById("paper").innerHTML = "";
+				document.querySelector("#scissor").innerHTML = "";
+				if (comp == "paper"){
 					result = "You Lose!!"
 					
-				} else if (comp == "Scissors"){
+				} else if (comp == "scissors"){
 					result = "You Win!!"
 					
 				}
 
 			}
-			if (inp_name == "Paper"){
-				if (comp == "Stone"){
+			if (what == "paper"){
+				document.getElementById("stone").innerHTML = "";
+				document.querySelector("#scissor").innerHTML = "";
+				if (comp == "stone"){
 					result = "You Win!!"
 					
-				} else if (comp == "Scissors"){
+				} else if (comp == "scissors"){
 					result = "You Lose!!"
 					
 				}
 
 			}
-			if (inp_name == "Scissors"){
-				if (comp == "Stone"){
+			if (what == "scissors"){
+				document.getElementById("paper").innerHTML = "";
+				document.querySelector("#stone").innerHTML = "";
+				if (comp == "stone"){
 					result = "You Lose!!"
 					
-				} else if (comp == "Paper"){
+				} else if (comp == "paper"){
 					result = "You Win!!"
 					
 				}
 
 			}
-			document.getElementById("result").innerHTML = result;			
+			document.getElementById("result").innerHTML = result;
+			document.querySelector("#reset").innerHTML = "RESET";			
 		};
 	
 	</script>
@@ -77,27 +84,30 @@
 </head>
 <body>
 	<h1>Stone, Paper, Scissor</h1>
-	<div style="font-size: 20px;">
-	<label for="options">Choose an option:</label>
-  <select onchange="random_num(1, 4)" id="inp_name" name="inp_name" style="font-size: inherit;">
-    <option value="" disabled selected>Choose</option>
-	<option value="Stone">Stone</option>
-    <option value="Paper">Paper</option>
-    <option value="Scissors">Scissors</option>
-  </select>
-	<button onclick="random_num(1, 4)" style="font-size: inherit;" >CLICK</button>
-</div>
-	<table style="width:100%; margin-top: 20px; ">
+	
+	<table style="width:100%; height: 50%; margin-top: 20px; ">
 		<tr>
-			<th><div style="background-color: violet;"><h1 class="user" id="user_inp">...</h1></div></th>
-			<th><div style="background-color: tomato;"><h1 class="computer" id="demo1">...</h1></div></th>
-			
+			<th><div style="background-color: violet;"><h1 class="user" >PLAYER</h1></div></th>
+			<th><div style="background-color: tomato;"><h1 class="computer" >COMPUTER</h1></div></th>	
+		</tr>
+		<tr>
+			<th><h1 id="stone" onclick="random_num(1, 4, 'stone')" style="cursor: pointer;"><img src="stone.png" alt="stone" style="width: 100px;"></h1></th>
+			<th></th>
+		</tr>
+		<tr>
+			<th><h1 id="paper" onclick="random_num(1, 4, 'paper')" style="cursor: pointer;"><img src="paper.png" alt="stone" style="width: 100px;"></h1></th>
+			<th><h1 id="demo1"></h1></th>
+		</tr>
+		<tr>
+			<th><h1 id="scissor" onclick="random_num(1, 4, 'scissors')" style="cursor: pointer;"><img src="scissors.png" alt="stone" style="width: 100px;"></h1></th>
+			<th></th>
 		</tr>
 	</table>
 	
 	 <h2 id="demo"></h2>
 	
 	 
-	<h2 id="result" style="font-size: 40px;">...</h2>
+	<h2 id="result" style="font-size: 40px;">...</h2><br>
+	<h2 id="reset" style="font-size: 40px; cursor: pointer;" onclick="window.location.reload();" ></h2>
 
 </body>
